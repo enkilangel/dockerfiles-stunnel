@@ -1,4 +1,4 @@
-FROM alpine:edge
+FROM alpine:3.16.2
 
 RUN set -x \
  && addgroup -S stunnel \
@@ -18,6 +18,7 @@ RUN set -x \
  && apk --no-network info stunnel
 COPY *.template openssl.cnf /srv/stunnel/
 COPY stunnel.sh /srv/
+# COPY ca-certs.pem /srv/
 
 RUN set -x \
  && chmod +x /srv/stunnel.sh \
